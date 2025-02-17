@@ -1,194 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="jquery.js"></script>
+    <script src="jquery.json-editor.min.js"></script>
     <style>
-      :root {
-        --light-bg: #ffffff;
-        --light-text: #1a1a1a;
-        --light-border: #cccccc;
-        --light-hover: #f0f0f0;
-        --json-key-light: #9c27b0; /* Purple */
-        --json-string-light: #2e7d32; /* Green */
-        --json-number-light: #1976d2; /* Blue */
-        --json-boolean-light: #c2185b; /* Pink */
-        --json-null-light: #616161; /* Gray */
-
-        --dark-bg: #242424;
-        --dark-text: #e8e8e8;
-        --dark-border: #444444;
-        --dark-hover: #2d2d2d;
-        --json-key-dark: #ce93d8; /* Light purple */
-        --json-string-dark: #a5d6a7; /* Light green */
-        --json-number-dark: #90caf9; /* Light blue */
-        --json-boolean-dark: #f48fb1; /* Light pink */
-        --json-null-dark: #9e9e9e; /* Light gray */
-      }
-
-      @media (prefers-color-scheme: light) {
-        body {
-          --bg-color: var(--light-bg);
-          --text-color: var(--light-text);
-          --border-color: var(--light-border);
-          --hover-bg: var(--light-hover);
-          --json-key: var(--json-key-light);
-          --json-string: var(--json-string-light);
-          --json-number: var(--json-number-light);
-          --json-boolean: var(--json-boolean-light);
-          --json-null: var(--json-null-light);
-        }
-      }
-
-      @media (prefers-color-scheme: dark) {
-        body {
-          --bg-color: var(--dark-bg);
-          --text-color: var(--dark-text);
-          --border-color: var(--dark-border);
-          --hover-bg: var(--dark-hover);
-          --json-key: var(--json-key-dark);
-          --json-string: var(--json-string-dark);
-          --json-number: var(--json-number-dark);
-          --json-boolean: var(--json-boolean-dark);
-          --json-null: var(--json-null-dark);
-        }
-      }
-
       body {
         margin: 0;
-        font-family: "Segoe UI", system-ui, sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-color);
-      }
-
-      .container {
-        display: flex;
-        height: 100vh;
-      }
-      .sidebar {
-        width: 30%;
-        border-right: 1px solid var(--border-color);
-        overflow-y: auto;
-        background-color: var(--bg-color);
-      }
-      .content {
-        width: 70%;
-        padding: 16px;
-        overflow-y: auto;
-        font-family: monospace;
-        font-size: 13px;
-      }
-      .request-item {
-        padding: 8px 16px;
-        border-bottom: 1px solid var(--border-color);
-        cursor: pointer;
-        font-size: 13px;
-        line-height: 1.5;
-        transition: all 0.15s;
-        position: relative;
-        background-color: var(--bg-color);
-      }
-      .request-item.selected {
-        background-color: var(--hover-bg);
-        border-left: 4px solid #4caf50;
-      }
-      .request-item:hover {
-        background-color: var(--hover-bg);
-      }
-      .request-item::before {
-        content: "•";
-        color: #4caf50;
-        margin-right: 8px;
-      }
-      #clearButton {
-        margin: 16px;
-        padding: 8px 16px;
-        background-color: transparent;
-        border: 1px solid var(--border-color);
-        color: var(--text-color);
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.15s;
-      }
-      #clearButton:hover {
-        background-color: var(--hover-bg);
+        padding: 0;
+        background-color: #1c2833;
+        color: #fff;
+        font-size: 12px;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
       }
       pre {
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        margin: 0;
-      }
-      /* JSON Syntax Highlighting */
-      .json-key {
-        color: var(--json-key);
-      }
-      .json-string {
-        color: var(--json-string);
-      }
-      .json-number {
-        color: var(--json-number);
-      }
-      .json-boolean {
-        color: var(--json-boolean);
-      }
-      .json-null {
-        color: var(--json-null);
-      }
-      .json-container {
-        position: relative;
-        margin-left: 20px;
-      }
-      .json-expander {
-        position: absolute;
-        left: -18px;
-        top: 3px;
-        width: 12px;
-        height: 12px;
-      }
-      .json-expander svg {
-        transition: transform 0.2s ease;
-      }
-      .json-bracket {
-        color: var(--text-color);
-        margin: 0 2px;
-      }
-      .json-content {
-        margin-left: 4px;
-        border-left: 1px solid var(--border-color);
-        padding-left: 12px;
-      }
-      .json-ellipsis {
-        display: none;
-        color: var(--text-color);
-        margin: 0 2px;
-      }
-      .collapsed .json-content {
-        display: none;
-      }
-      .collapsed .json-ellipsis {
-        display: inline;
-      }
-      .json-entry {
-        display: block;
-        position: relative;
-        line-height: 1.4;
-        margin: 1px 0;
-      }
-      .json-key {
-        color: var(--json-key);
-        margin-right: 4px;
+        font-size: 12px !important;
+        user-select: text; /* Ensure text is selectable */
+        -webkit-user-select: text; /* For Safari compatibility */
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="sidebar">
-        <button id="clearButton" onclick="clearRequests()">Clear All</button>
-        <ul
-          id="requestList"
-          style="list-style: none; padding: 0; margin: 0"
-        ></ul>
-      </div>
-      <div class="content" id="jsonViewer"></div>
-    </div>
+    <pre id="json-display"></pre>
     <script src="panel.js"></script>
   </body>
 </html>
