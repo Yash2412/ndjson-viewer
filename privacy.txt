@@ -1,0 +1,47 @@
+Privacy Policy
+Effective Date: [February 17, 2025]
+
+NDJSON Viewer™ ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how the NDJSON Viewer Chrome extension ("Extension") handles information when you use our developer tool.
+
+1. No Data Collection
+The Extension does not collect, store, or transmit any:
+- Personal information
+- Usage data
+- Network requests
+- Browser content
+- Device information
+All processing occurs exclusively within your local browser environment.
+
+2. Local Data Processing
+The Extension operates entirely client-side:
+- No data leaves your device
+- No external server communication
+- No persistent storage of processed data
+- No third-party data sharing
+
+3. Cookies and Tracking
+NDJSON Viewer does not use:
+- Cookies
+- Tracking technologies
+- Analytics tools
+- Persistent identifiers
+
+4. Third-Party Services
+The Extension contains no:
+- Advertising integrations
+- Social media plugins
+- Third-party APIs
+- External service dependencies
+
+5. Children's Privacy
+Our tool is not directed at children. We do not knowingly collect personal information from users under 13 (or 16 in some jurisdictions).
+
+6. Policy Updates
+Changes will be:
+- Posted here with updated Effective Date
+- Available in the Chrome Web Store listing
+- Accessible through the extension's details
+
+7. Contact Information
+For privacy questions, contact:
+yashjanoria999@gmail.com
