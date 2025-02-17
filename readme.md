@@ -1,17 +1,17 @@
-# NDJSON Converter Chrome Extension
+# NDJSON Viewer Chrome Extension
 
 ![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-%234285F4?logo=google-chrome)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-Convert and inspect NDJSON (Newline Delimited JSON) responses directly in your browser's DevTools. Perfect for working with streaming APIs and JSONL formats.
+Inspect NDJSON (Newline Delimited JSON) responses directly in Chrome Developer Tools. Designed for debugging streaming APIs and JSONL formats.
 
 ## Features ✨
 
-- **NDJSON Detection** - Automatically detects `application/x-ndjson` responses
-- **Real-time Monitoring** - Captures network requests while DevTools is open
-- **Pretty-printed JSON** - Formats JSON with syntax highlighting
-- **One-Click Copy** - Copy converted JSON to clipboard from popup
+- **Automatic NDJSON Detection** - Identifies `application/x-ndjson` responses in Network panel
+- **Real-time Stream Monitoring** - Captures and displays NDJSON responses as they arrive
+- **Syntax Highlighted Preview** - Pretty-printed JSON with collapsible tree view
 - **DevTools Integration** - Dedicated panel in Chrome Developer Tools
+- **Clipboard Support** - Copy formatted JSON objects to clipboard
 
 ## Installation 🛠️
 
@@ -26,10 +26,10 @@ Convert and inspect NDJSON (Newline Delimited JSON) responses directly in your b
 
 1. Open Chrome DevTools (`Ctrl+Shift+I`/`Cmd+Option+I`)
 2. Navigate to the "NDJSON Viewer" panel
-3. Browse pages - NDJSON responses will automatically appear
+3. All NDJSON network responses will automatically appear here
 
-### Using Popup
+### Extension Popup
 
-1. Click extension icon in toolbar
-2. View all captured NDJSON responses
+1. Click the extension icon in Chrome's toolbar
+2. View historical NDJSON responses
 3. Click "Copy JSON" to copy formatted data

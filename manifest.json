@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "NDJSON Converter",
+  "name": "NDJSON Viewer",
   "version": "1.0",
   "permissions": ["webRequest", "webNavigation", "storage"],
   "host_permissions": ["*://*/*"],
